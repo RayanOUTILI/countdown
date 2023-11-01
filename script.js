@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 const dateActuelle = new Date().getTime();
                 const tempsRestant = échéance - dateActuelle;
 
+                if (tempsRestant <= 0) {
+                    const joursElements = document.querySelectorAll('.' + joursClass);
+                    const heuresElements = document.querySelectorAll('.' + heuresClass);
+                    const minutesElements = document.querySelectorAll('.' + minutesClass);
+                    const secondesElements = document.querySelectorAll('.' + secondesClass);
+
+                    joursElements.forEach(element => element.textContent = "Etape terminée :)");
+                    heuresElements.forEach(element => element.textContent = "");
+                    minutesElements.forEach(element => element.textContent = "");
+                    secondesElements.forEach(element => element.textContent = "");
+
+                    return;
+                }
+
                 const jours = Math.floor(tempsRestant / (1000 * 60 * 60 * 24));
                 const heures = Math.floor((tempsRestant % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((tempsRestant % (1000 * 60 * 60)) / (1000 * 60));
@@ -44,11 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const progression = (dateActuelle - dateDebut) / (dateFin - dateDebut) * 100;
         const progressElement = document.getElementById("progress");
-        console.log(progression);
+        const pourcentage = progression.toFixed(2) + '%';
+        console.log(pourcentage);
         progressElement.style.width = progression + '%';
+        progressElement.textContent = pourcentage;
     }
 
     updateProgressBar();
 
 });
-
