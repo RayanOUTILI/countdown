@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     function countdown() {
-        const échéance2 = new Date('2023-11-10T19:00:00').getTime();
         const échéance3 = new Date('2023-12-15T19:00:00').getTime();
         const échéance4 = new Date('2024-01-19T19:00:00').getTime();
 
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
             update();
         }
 
-        updateCountdown(échéance2, 'jours2', 'heures2', 'minutes2', 'secondes2');
         updateCountdown(échéance3, 'jours3', 'heures3', 'minutes3', 'secondes3');
         updateCountdown(échéance4, 'jours4', 'heures4', 'minutes4', 'secondes4');
     }
