@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const minutesElements = document.querySelectorAll('.' + minutesClass);
                     const secondesElements = document.querySelectorAll('.' + secondesClass);
 
-                    joursElements.forEach(element => element.textContent = "Etape terminée :)");
+                    joursElements.forEach(element => element.textContent = "Projet terminée :)");
                     heuresElements.forEach(element => element.textContent = "");
                     minutesElements.forEach(element => element.textContent = "");
                     secondesElements.forEach(element => element.textContent = "");
@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const progression = (dateActuelle - dateDebut) / (dateFin - dateDebut) * 100;
         const progressElement = document.getElementById("progress");
         const pourcentage = progression.toFixed(2) + '%';
+        if (poucentage > 100){
+            pourcentage = 100;
+        }
         console.log(pourcentage);
         progressElement.style.width = progression + '%';
         progressElement.textContent = pourcentage;
